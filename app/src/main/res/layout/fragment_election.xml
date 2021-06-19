@@ -33,7 +33,7 @@
             android:id="@+id/rv_upcoming_elections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:liveData="@{viewModel.upcomingElections}"
+            app:listData="@{viewModel.upcomingElections}"
             android:nestedScrollingEnabled="false"
             android:padding="@dimen/padding"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -50,7 +50,7 @@
             android:id="@+id/rv_saved_elections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:liveData="@{viewModel.savedElections}"
+            app:listData="@{viewModel.savedElections}"
             android:nestedScrollingEnabled="false"
             android:padding="@dimen/padding" />
     </LinearLayout>

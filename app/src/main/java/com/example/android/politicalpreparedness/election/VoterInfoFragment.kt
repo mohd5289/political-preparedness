@@ -1,5 +1,7 @@
 package com.example.android.politicalpreparedness.election
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -10,7 +12,7 @@ import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 
 class VoterInfoFragment : Fragment() {
-   // private val model: VoterInfoViewModel by activityViewModels()
+    private lateinit var viewModel:VoterInfoViewModel
     private lateinit var binding: FragmentVoterInfoBinding
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -20,11 +22,26 @@ class VoterInfoFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_voter_info, container, false)
 
      //   binding.viewModel = model
-        binding.lifecycleOwner = this
-        val selectedElection = VoterInfoFragmentArgs.fromBundle(requireArguments()).selectedElection
+
+       val selectedElection = VoterInfoFragmentArgs.fromBundle(requireArguments()).selectedElection
         val viewModelFactory = VoterInfoViewModel.Factory(selectedElection, application)
-        binding.viewModel = ViewModelProvider(
-                this, viewModelFactory).get(VoterInfoViewModel::class.java)
+       viewModel= ViewModelProvider(
+               this, viewModelFactory).get(VoterInfoViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+       // binding.electionName.text = selectedElection.name
+        binding.electionDate.text = selectedElection.electionDay.toString()
+        //binding.viewModel = viewModel
+
+        viewModel.election = selectedElection
+
+        //viewModel.checkElectionFollowStatus()
+
+        binding.info.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://myvote.wi.gov"))
+            startActivity(browserIntent)
+        }
 
         return binding.root
         //TODO: Add binding values

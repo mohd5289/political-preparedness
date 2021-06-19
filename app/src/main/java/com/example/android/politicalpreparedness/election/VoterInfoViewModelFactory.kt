@@ -13,10 +13,13 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 //TODO: Create Factory to generate VoterInfoViewModel with provided election datasource
-class VoterInfoViewModelFactory(val election: Election, application: Application) : ViewModelProvider.Factory {
+class VoterInfoViewModelFactory(private val election: Election, private val application: Application) : ViewModelProvider.Factory {
 
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        TODO("Not yet implemented")
+        if (modelClass.isAssignableFrom(VoterInfoViewModel::class.java)) {
+            return VoterInfoViewModel(election, application) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

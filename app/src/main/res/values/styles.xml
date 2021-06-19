@@ -10,5 +10,22 @@
     </style>
 
     <!-- TODO: Add necessary styles -->
+    <style name="ItemTextTitleInList" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
 
+    <style name="MainTextTitle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/main_title</item>
+        <item name="android:layout_marginTop">@dimen/default_margin</item>
+        <item name="android:layout_marginStart">@dimen/default_margin</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin</item>
+    </style>
+
+    <style name="DefaultRecycler" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_marginTop">@dimen/default_margin</item>
+        <item name="android:layout_marginStart">@dimen/default_margin</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin</item>
+    </style>
 </resources>

@@ -27,7 +27,9 @@ class ElectionsViewModel(private val api: CivicsApiService, private val dataSour
         }
     }
      fun onElectionClicked(election: Election, fragment:Fragment) {
-         fragment.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToElectionDetailFragment(election))
+
+
+         fragment.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(election))
 
     }
     fun  getSavedElections(){

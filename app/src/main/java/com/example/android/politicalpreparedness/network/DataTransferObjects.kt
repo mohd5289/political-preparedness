@@ -196,6 +196,16 @@ fun NetworkAddress.asDatabaseModel(): DatabaseAddress {
 
 */
 
+fun List<NetworkElection>.asDatabaseModel(): Array<Election>{
+    return this.map {
+        Election(
+                id = it.id,
+                name = it.name,
+                electionDay = it.electionDay,
+                division = it.division.asDatabaseModal()
+        )
+    }.toTypedArray()
+}
 
 
 //------------------------------------ Representative -----------------------------//

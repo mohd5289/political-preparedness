@@ -15,11 +15,14 @@ interface ElectionDao {
 
     //TODO: Add select all election query
     @Query("SELECT * FROM election_table")
-     fun getElections(): LiveData <List<Election>>
+     fun getElections():  List<Election>
 
     //TODO: Add select single election query
     @Query("SELECT * from election_table where id = :id")
     suspend fun getElectionById(id: Int): Election?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAllElections(vararg elections: Election)
 
     //TODO: Add delete query
     @Query("DELETE FROM election_table where id=:id")

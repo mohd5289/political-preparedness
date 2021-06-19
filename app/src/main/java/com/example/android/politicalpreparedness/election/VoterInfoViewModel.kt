@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 import repository.AppRepository
 import java.lang.Exception
 
-class VoterInfoViewModel(val election: Election, application: Application) :AndroidViewModel(application) {
+class VoterInfoViewModel(var election: Election, application: Application) :AndroidViewModel(application) {
     var client: CivicsApiService = CivicsApi.retrofitService
 
     private val database = ElectionDatabase.getInstance(application)
