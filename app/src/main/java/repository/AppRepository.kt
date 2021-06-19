@@ -19,7 +19,8 @@ class AppRepository(private val database: ElectionDatabase) {
 
     var client: CivicsApiService = CivicsApi.retrofitService
 
-    var allElections: List<Election> = database.electionDao.getElections()
+
+       // var allElections: List<Election> = database.electionDao.getElections()
 
     var followedElections: LiveData<List<Election>> = database.electionDao.getFollowedElections()
 

@@ -128,6 +128,7 @@ class VoterInfoViewModel(var election: Election, application: Application) :Andr
         }
     }
     //
+    //
     // TODO: Add live data to hold voter info
 
     //TODO: Add var and methods to populate voter info

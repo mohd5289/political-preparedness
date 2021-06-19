@@ -18,7 +18,8 @@ class VoterInfoFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val application = requireNotNull(activity).application
-        //TODO: Add ViewModel values and create ViewModel
+        //
+        // TODO: Add ViewModel values and create ViewModel
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_voter_info, container, false)
 
      //   binding.viewModel = model
