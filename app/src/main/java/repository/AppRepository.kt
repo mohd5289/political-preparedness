@@ -27,14 +27,20 @@ class AppRepository(private val database: ElectionDatabase) {
 
     suspend fun isElectionFollowed(id: Int) = database.electionDao.getFollowedElection(id) != null && database.electionDao.getFollowedElection(id) == id
     suspend fun followElection(id: Int) = database.electionDao.followElection(FollowedElection(id))
-    suspend fun unfollowElection(id: Int) = database.electionDao.unfollowElection(id)
-
+  //  suspend fun unfollowElection(id: Int) = database.electionDao.unfollowElection(id)
+    suspend fun followElection(election: Election) {
+        database.electionDao.followElection(FollowedElection(election.id))
+        database.electionDao.insertElection(election)
+    }
     suspend fun refreshElectionData() {
 
         refreshElections()
 
     }
-
+    suspend fun unfollowElection(id: Int) {
+        database.electionDao.unfollowElection(id)
+        database.electionDao.deleteById(id)
+    }
 
     private suspend fun refreshElections() {
         withContext(Dispatchers.IO) {

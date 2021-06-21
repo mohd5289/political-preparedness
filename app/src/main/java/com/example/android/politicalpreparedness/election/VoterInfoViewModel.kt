@@ -83,7 +83,7 @@ class VoterInfoViewModel(var election: Election, application: Application) :Andr
             appRepository.unfollowElection(election.id)
             updateFollowButtonText()
         } else {
-            appRepository.followElection(election.id)
+            appRepository.followElection(election)
             updateFollowButtonText()
         }
 
