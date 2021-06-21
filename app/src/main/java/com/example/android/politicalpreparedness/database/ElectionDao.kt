@@ -34,7 +34,7 @@ interface ElectionDao {
     @Query("SELECT * FROM election_table INNER JOIN followed_elections ON election_table.id = followed_elections.id ")
     fun getFollowedElections():LiveData<List<Election>>
 
-    @Query("SELECT election_table.id FROM election_table WHERE id =:id AND  id IN followed_elections ")
+    @Query("SELECT id FROM followed_elections WHERE id =:id AND  id IN followed_elections ")
     suspend fun getFollowedElection(id: Int): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
